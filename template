@@ -1,0 +1,26 @@
+ENTITY <<entity>> IS
+  PORT(
+<<ports>>);
+END <<entity>>;
+ARCHITECTURE a OF <<entity>> IS
+   TYPE STATE_TYPE IS (<<state_list>>);
+   SIGNAL state : STATE_TYPE;
+BEGIN
+  PROCESS (clk, reset)
+  BEGIN
+    IF reset = '1' THEN
+      state <= <<first_state>>;
+    ELSIF (clk'EVENT AND clk = '1') THEN
+      CASE state IS
+<<input_conditions>>
+      END CASE;
+    END IF;
+  END PROCESS;
+
+  PROCESS (state)
+  BEGIN
+    CASE state IS
+<<output_conditions>>
+    END CASE;
+  END PROCESS;
+END a;
